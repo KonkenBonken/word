@@ -7,12 +7,17 @@ f.close()
 
 
 def generate_word():
-    letters = list(chars.keys())
-    word = ''
+    word = random.choice(list(chars.keys()))
     for _ in range(random.randint(3, 8)):
-        letter = random.choice(letters)
+        num = random.random()
+        letter = '?'
+        for l in chars.keys():
+            num -= chars[word[0]][l]
+            if num <= 0:
+                letter = l
+                break
+
         word += letter
-        letters = list(chars[letter])
     return word
 
 
