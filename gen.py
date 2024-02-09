@@ -2,19 +2,19 @@ import pickle
 import random
 
 f = open('graph.pickle', 'rb')
-heads = pickle.load(f)
+chars = pickle.load(f)
 f.close()
 
 
 def generate_word():
-    head = heads
+    letters = list(chars.keys())
     word = ''
-    while True:
-        letter = random.choice(list(head.keys()))
-        if letter == '\r':
-            return word
+    for _ in range(random.randint(3, 8)):
+        letter = random.choice(letters)
         word += letter
-        head = head[letter]
+        letters = list(chars[letter])
+    return word
 
 
-print(generate_word())
+for _ in range(10):
+    print(generate_word())
