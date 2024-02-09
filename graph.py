@@ -1,3 +1,5 @@
+import pickle
+
 heads = dict()
 
 
@@ -17,4 +19,5 @@ with open('ord.txt', 'r', encoding='utf8') as f:
             break
         rec(heads, word[0], word[1:])
 
-print(heads)
+with open('graph.pickle', 'wb') as f:
+    pickle.dump(heads, f)
